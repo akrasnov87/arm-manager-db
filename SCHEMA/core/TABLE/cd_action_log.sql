@@ -26,4 +26,8 @@ COMMENT ON COLUMN core.cd_action_log.d_date IS 'Дата события';
 
 --------------------------------------------------------------------------------
 
-CREATE INDEX cd_action_log_c_table_name_c_operation_idx ON core.cd_action_log USING btree (c_table_name, c_operation);
+CREATE INDEX cd_action_log_c_table_name_idx ON core.cd_action_log USING btree (c_table_name);
+
+--------------------------------------------------------------------------------
+
+CREATE INDEX cd_action_log_d_date_idx ON core.cd_action_log USING btree (d_date DESC NULLS LAST);

@@ -1,23 +1,25 @@
 CREATE TABLE core.dd_documents (
-	id integer DEFAULT nextval('core.dd_documents_id_seq'::regclass) NOT NULL,
-	n_number integer,
+	id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+	n_number integer NOT NULL,
 	c_fio text NOT NULL,
 	d_birthday date NOT NULL,
 	n_year smallint NOT NULL,
 	c_document text NOT NULL,
-	c_address text,
-	d_date timestamp with time zone,
-	c_time text,
-	c_intent text,
-	c_account text,
+	c_address text NOT NULL,
+	d_date timestamp with time zone NOT NULL,
+	c_time text NOT NULL,
+	c_intent text NOT NULL,
+	c_account text NOT NULL,
 	c_accept text,
 	c_earth text,
 	d_take_off_solution date,
 	d_take_off_message date,
 	c_notice text,
 	f_user integer NOT NULL,
-	f_parent integer,
-	sn_delete boolean NOT NULL
+	jb_child jsonb,
+	sn_delete boolean NOT NULL,
+	c_import_doc text,
+	c_import_warning text
 );
 
 ALTER TABLE core.dd_documents OWNER TO mobnius;
@@ -56,7 +58,11 @@ COMMENT ON COLUMN core.dd_documents.c_notice IS 'Примечание';
 
 COMMENT ON COLUMN core.dd_documents.f_user IS 'Пользователь';
 
-COMMENT ON COLUMN core.dd_documents.f_parent IS 'Родитель';
+COMMENT ON COLUMN core.dd_documents.jb_child IS 'Вложения';
+
+COMMENT ON COLUMN core.dd_documents.c_import_doc IS 'Документ из которого импортировались данные';
+
+COMMENT ON COLUMN core.dd_documents.c_import_warning IS 'Замечания после импорта';
 
 --------------------------------------------------------------------------------
 
@@ -74,8 +80,3 @@ ALTER TABLE core.dd_documents
 
 ALTER TABLE core.dd_documents
 	ADD CONSTRAINT dd_documnets_f_user_fkey FOREIGN KEY (f_user) REFERENCES core.pd_users(id) NOT VALID;
-
---------------------------------------------------------------------------------
-
-ALTER TABLE core.dd_documents
-	ADD CONSTRAINT dd_documents_f_parent_fkey FOREIGN KEY (f_parent) REFERENCES core.dd_documents(id) NOT VALID;
