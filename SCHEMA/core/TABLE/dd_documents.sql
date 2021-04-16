@@ -64,6 +64,10 @@ COMMENT ON COLUMN core.dd_documents.c_import_doc IS 'Документ из ко�
 
 COMMENT ON COLUMN core.dd_documents.c_import_warning IS 'Замечания после импорта';
 
+COMMENT ON COLUMN core.dd_documents.c_import_doc IS 'Документ из которого импортировались данные';
+
+COMMENT ON COLUMN core.dd_documents.c_import_warning IS 'Замечания после импорта';
+
 --------------------------------------------------------------------------------
 
 CREATE TRIGGER dd_documents_1
