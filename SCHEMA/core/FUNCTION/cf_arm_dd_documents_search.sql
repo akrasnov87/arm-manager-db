@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION core.cf_arm_dd_documents_search(_txt text) 
-RETURNS TABLE(id uuid, n_number integer, c_fio text, c_document text, c_address text, c_account text, c_accept text, c_notice text)
+RETURNS TABLE(id uuid, n_number integer, c_fio text, c_document text, c_address text, c_account text, c_accept text, c_notice text, sn_delete boolean)
     LANGUAGE plpgsql STABLE
     AS $$
 /**
@@ -17,7 +17,8 @@ BEGIN
 	    d.c_address,
 	    d.c_account,
 	    d.c_accept,
-	    d.c_notice 
+	    d.c_notice,
+	    d.sn_delete
 	from core.dd_documents as d
 	where d.n_number::text like '%'||_txt||'%' or lower(d.c_fio) ilike '%'||_txt||'%' or lower(d.c_document) ilike '%'||_txt||'%'
 	or lower(d.c_address) ilike '%'||_txt||'%' or lower(d.c_account) ilike '%'||_txt||'%' or lower(d.c_accept) ilike '%'||_txt||'%' or lower(d.c_notice) ilike '%'||_txt||'%';
