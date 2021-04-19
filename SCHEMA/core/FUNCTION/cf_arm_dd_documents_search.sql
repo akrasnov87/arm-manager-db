@@ -1,5 +1,4 @@
-CREATE OR REPLACE FUNCTION core.cf_arm_dd_documents_search(_txt text) 
-RETURNS TABLE(id uuid, n_number integer, c_fio text, c_document text, c_address text, c_account text, c_accept text, c_notice text, sn_delete boolean)
+CREATE OR REPLACE FUNCTION core.cf_arm_dd_documents_search(_txt text) RETURNS TABLE(id uuid, n_number integer, c_fio text, c_document text, c_address text, d_date date, c_account text, c_accept text, c_notice text, sn_delete boolean)
     LANGUAGE plpgsql STABLE
     AS $$
 /**
@@ -15,6 +14,7 @@ BEGIN
 	    d.c_fio,
 	    d.c_document,
 	    d.c_address,
+		d.d_date::date,
 	    d.c_account,
 	    d.c_accept,
 	    d.c_notice,

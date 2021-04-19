@@ -19,7 +19,8 @@ CREATE TABLE core.dd_documents (
 	jb_child jsonb,
 	sn_delete boolean NOT NULL,
 	c_import_doc text,
-	c_import_warning text
+	c_import_warning text,
+	dx_created timestamp with time zone DEFAULT now()
 );
 
 ALTER TABLE core.dd_documents OWNER TO mobnius;
@@ -59,10 +60,6 @@ COMMENT ON COLUMN core.dd_documents.c_notice IS 'Примечание';
 COMMENT ON COLUMN core.dd_documents.f_user IS 'Пользователь';
 
 COMMENT ON COLUMN core.dd_documents.jb_child IS 'Вложения';
-
-COMMENT ON COLUMN core.dd_documents.c_import_doc IS 'Документ из которого импортировались данные';
-
-COMMENT ON COLUMN core.dd_documents.c_import_warning IS 'Замечания после импорта';
 
 COMMENT ON COLUMN core.dd_documents.c_import_doc IS 'Документ из которого импортировались данные';
 
