@@ -3,7 +3,7 @@ CREATE TABLE core.dd_documents (
 	n_number integer NOT NULL,
 	c_fio text NOT NULL,
 	d_birthday date NOT NULL,
-	n_year smallint NOT NULL,
+	n_year smallint,
 	c_document text NOT NULL,
 	c_address text NOT NULL,
 	d_date timestamp with time zone NOT NULL,

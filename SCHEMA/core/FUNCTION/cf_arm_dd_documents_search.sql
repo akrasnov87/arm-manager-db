@@ -23,8 +23,8 @@ BEGIN
 	    d.sn_delete,
 		d.c_tag
 	from core.dd_documents as d
-	where d.f_type = _f_type AND d.n_number::text like '%'||_txt||'%' or lower(d.c_fio) ilike '%'||_txt||'%' or lower(d.c_document) ilike '%'||_txt||'%'
-	or lower(d.c_address) ilike '%'||_txt||'%' or lower(d.c_account) ilike '%'||_txt||'%' or lower(d.c_accept) ilike '%'||_txt||'%' or lower(d.c_notice) ilike '%'||_txt||'%' or lower(d.jb_child::text) ilike '%'||_txt||'%'
+	where d.f_type = _f_type AND (d.n_number::text like '%'||_txt||'%' or lower(d.c_fio) ilike '%'||_txt||'%' or lower(d.c_document) ilike '%'||_txt||'%'
+	or lower(d.c_address) ilike '%'||_txt||'%' or lower(d.c_account) ilike '%'||_txt||'%' or lower(d.c_accept) ilike '%'||_txt||'%' or lower(d.c_notice) ilike '%'||_txt||'%' or lower(d.jb_child::text) ilike '%'||_txt||'%')
 	order by d.d_date desc;
 END
 $$;
