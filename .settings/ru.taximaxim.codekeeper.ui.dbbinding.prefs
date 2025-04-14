@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-prefLastDbStore=\u0410\u0420\u041C \u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F (release)
+prefLastDbStore=postgres@94.232.57.73/manager-release-db
 prefLastDbStoreEditor=mobnius@94.232.57.73/manager-test-db
 prefLastDirection=true

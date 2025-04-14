@@ -6,7 +6,7 @@ CREATE TABLE core.dd_documents (
 	n_year smallint,
 	c_document text NOT NULL,
 	c_address text NOT NULL,
-	d_date timestamp with time zone NOT NULL,
+	d_date date NOT NULL,
 	c_time text NOT NULL,
 	c_intent text NOT NULL,
 	c_account text NOT NULL,
